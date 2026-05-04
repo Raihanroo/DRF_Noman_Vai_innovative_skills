@@ -13,7 +13,7 @@ class ProductViewSet(APIView):
     def get(self, request):
         products = Product.objects.all()
         paginator = PageNumberPagination()
-        paginator.page_size = 2
+        paginator.page_size = 100
         result = paginator.paginate_queryset(products, request)
         serializer = ProductSerializer(result, many=True)
         return paginator.get_paginated_response(serializer.data)
