@@ -3,6 +3,7 @@ from .models import Product
 
 
 class ProductSerializer(serializers.ModelSerializer):
+    owner = serializers.ReadOnlyField(source='owner.username')
     price = serializers.DecimalField(
         max_digits=10,
         decimal_places=2,
